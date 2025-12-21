@@ -6,6 +6,55 @@
 	<title>UK Music Finder</title>
 </head>
 <body>
-
+	<header class="header">
+		<div class="header__inner container">
+			<h1>UK Music Finder</h1>
+			<p>Discover British music by genre and era.</p>
+		</div>
+	</header>
+	<main class="main">
+		<!-- Add a hero section "Explore UK music!" later -->
+		<div class="main__iner container">
+			<div class="filters">
+				<h2>FILTERS</h2>
+				<form class="filter__form">
+					<div class="filter__form-item">
+						<label for="genre" class="filter__genre-label">Genre</label>
+						<select id="genre" class="filter__genre-select">
+							<option value="">Select Genre</option>
+							<option value="britpop">Britpop</option>
+							<option value="indie-rock">Indie Rock</option>
+							<option value="alternative">Alternative</option>
+							<option value="post-punk">Post-Punk</option>
+							<option value="electronic">Electronic</option>
+						</select>
+					</div>
+					<div class="filter__form-item">
+						<label for="era" class="filter__era-label">Era (Year)</label>
+						<select id="era" class="filter__era-select">
+							<option value="">Select Era</option>
+							<option value="1980s">1980s</option>
+							<option value="1990s">1990s</option>
+							<option value="2000s">2000s</option>
+							<option value="2010s">2010s</option>
+							<option value="2020s">2020s</option>
+						</select>
+					</div>
+					<button id="search" type="submit">Search</button>
+				</form>
+			</div>
+			<div class="results">
+				<h2 class="results__title">RESULTS</h2>
+				<ul class="results__list">
+					<!-- Insert song cards here-->
+				</ul>
+			</div>
+		</div>
+	</main>
+	<footer class="footer">
+		<div class="footer__inner container">
+			<small class="footer__copyright">&copy; 2025 UK Music Finder. All rights reserved.</small>
+		</div>
+	</footer>
 </body>
 </html>
