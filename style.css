@@ -1,0 +1,91 @@
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: 1.6rem;
+  color: #1a1a1a;
+  font-family: "Heletica Neue", sans-serif;
+}
+
+.container {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.header {
+  padding: 3rem 0;
+}
+.header__title {
+  font-size: 3.2rem;
+  text-align: center;
+  color: #00247d;
+}
+.header__description {
+  color: #666;
+  text-align: center;
+}
+
+.filters {
+  padding: 3.2rem;
+  border-radius: 1.2rem;
+}
+.filters__title {
+  font-size: 1.8rem;
+  color: #cf142b;
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+}
+.filters__btn {
+  display: block;
+  width: 100%;
+  padding: 1.2rem 0;
+  font-size: 1.8rem;
+  border-radius: 0.5rem;
+  border: none;
+  color: #fff;
+  background-color: #cf142b;
+  margin: 3.6rem 0 0 0;
+}
+.filters__btn:hover {
+  background-color: #e01538;
+}
+
+.filter__form-item {
+  padding: 2.4rem 0 0 0;
+}
+.filter__genre-label {
+  display: block;
+  color: #444;
+  font-weight: bold;
+  padding: 0 0 0.8rem 0;
+}
+.filter__genre-select {
+  display: block;
+  width: 100%;
+  border-radius: 0.5rem;
+  font-size: 1.6rem;
+  border: 0.1rem solid rgba(0, 36, 125, 0.3);
+  padding: 1rem 1.2rem;
+}
+.filter__era-label {
+  display: block;
+  color: #444;
+  font-weight: bold;
+  padding: 0 0 0.8rem 0;
+}
+.filter__era-select {
+  display: block;
+  width: 100%;
+  border: 0.1rem solid rgba(0, 36, 125, 0.3);
+  padding: 1rem 1.2rem;
+  border-radius: 0.5rem;
+  font-size: 1.6rem;
+}/*# sourceMappingURL=style.css.map */

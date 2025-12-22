@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+	<link rel="stylesheet" href="style.css">
 	<title>UK Music Finder</title>
 </head>
+
 <body>
 	<header class="header">
 		<div class="header__inner container">
-			<h1>UK Music Finder</h1>
-			<p>Discover British music by genre and era.</p>
+			<h1 class="header__title">UK Music Finder</h1>
+			<p class="header__description">Discover British music by genre and era.</p>
 		</div>
 	</header>
 	<main class="main">
 		<!-- Add a hero section "Explore UK music!" later -->
 		<div class="main__iner container">
 			<div class="filters">
-				<h2>FILTERS</h2>
+				<h2 class="filters__title">Filters</h2>
 				<form class="filter__form">
 					<div class="filter__form-item">
 						<label for="genre" class="filter__genre-label">Genre</label>
@@ -41,7 +44,7 @@
 							<option value="2020s">2020s</option>
 						</select>
 					</div>
-					<button id="search" type="submit">Search</button>
+					<button id="search" type="submit" class="filters__btn">Search</button>
 				</form>
 			</div>
 			<div class="results">
@@ -59,4 +62,5 @@
 	</footer>
 	<script src="main.js"></script>
 </body>
+
 </html>
