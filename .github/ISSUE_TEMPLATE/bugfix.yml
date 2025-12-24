@@ -1,6 +1,6 @@
 name: Critical Bugfix
 description: Report a critical bug that needs immediate attention
-title: "[BUGFIX] "
+title: "bugfix: "
 labels: ["bugfix"]
 body:
   - type: textarea
