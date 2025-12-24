@@ -18,6 +18,8 @@ jobs:
               with:
                   script: |
                       const prTitle = context.payload.pull_request.title;
+
+                      const titleWithoutType = prTitle.replace(/^(feat|fix|docs|bugfix|refactor):\s*/, '');
                       const mergeTitle = `Merge: ${prTitle}`;
 
                       await github.rest.issues.createComment({

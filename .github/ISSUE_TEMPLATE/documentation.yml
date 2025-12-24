@@ -1,6 +1,6 @@
 name: Documentation
 description: Suggest documentation improvements
-title: "[DOCS] "
+title: "docs: "
 labels: ["docs"]
 body:
   - type: textarea

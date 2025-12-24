@@ -1,6 +1,6 @@
 name: Feature Request
 description: Suggest a new feature for this project
-title: "[FEAT] "
+title: "feat: "
 labels: ["feat"]
 body:
   - type: textarea

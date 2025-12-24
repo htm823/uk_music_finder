@@ -1,6 +1,6 @@
 name: Refactoring
 description: Suggest code refactoring or improvements
-title: "[REFACTOR] "
+title: "refactor: "
 labels: ["refactor"]
 body:
   - type: textarea
