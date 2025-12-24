@@ -1,0 +1,69 @@
+name: Create Branch from Issue
+
+on:
+  issues:
+    types: [opened, labeled]
+
+jobs:
+  create-branch:
+    runs-on: ubuntu-latest
+    if: contains(github.event.issue.labels.*.name, 'feat') || contains(github.event.issue.labels.*.name, 'fix') || contains(github.event.issue.labels.*.name, 'docs') || contains(github.event.issue.labels.*.name, 'bugfix') || contains(github.event.issue.labels.*.name, 'refactor')
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Determine branch type
+        id: branch-type
+        run: |
+          LABELS="${{ join(github.event.issue.labels.*.name, ',') }}"
+
+          if echo "$LABELS" | grep -q "feat"; then
+            echo "type=feat" >> $GITHUB_OUTPUT
+          elif echo "$LABELS" | grep -q "bugfix"; then
+            echo "type=bugfix" >> $GITHUB_OUTPUT
+          elif echo "$LABELS" | grep -q "fix"; then
+            echo "type=fix" >> $GITHUB_OUTPUT
+          elif echo "$LABELS" | grep -q "docs"; then
+            echo "type=docs" >> $GITHUB_OUTPUT
+          elif echo "$LABELS" | grep -q "refactor"; then
+            echo "type=refactor" >> $GITHUB_OUTPUT
+          else
+            echo "type=feat" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create branch name
+        id: branch-name
+        run: |
+          ISSUE_NUMBER=${{ github.event.issue.number }}
+          ISSUE_TITLE="${{ github.event.issue.title }}"
+          BRANCH_TYPE="${{ steps.branch-type.outputs.type }}"
+
+          # Convert title to kebab-case
+          BRANCH_SUFFIX=$(echo "$ISSUE_TITLE" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g' | sed 's/--*/-/g' | sed 's/^-//' | sed 's/-$//' | cut -c1-50)
+
+          BRANCH_NAME="${BRANCH_TYPE}/#${ISSUE_NUMBER}_${BRANCH_SUFFIX}"
+          echo "name=${BRANCH_NAME}" >> $GITHUB_OUTPUT
+
+      - name: Create branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "${{ steps.branch-name.outputs.name }}"
+          git push origin "${{ steps.branch-name.outputs.name }}"
+
+      - name: Comment on issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `Branch created: \`${{ steps.branch-name.outputs.name }}\`\n\nYou can check out this branch locally with:\n\`\`\`bash\ngit fetch origin\ngit checkout ${{ steps.branch-name.outputs.name }}\n\`\`\``
+            })
+
+
+
