@@ -1,4 +1,4 @@
-nname: Create Branch from Issue
+name: Create Branch from Issue
 
 on:
     issues:
